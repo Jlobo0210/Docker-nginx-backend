@@ -25,8 +25,5 @@
     "type": "git",
     "url": "git+https://github.com/Jlobo0210/Docker-nginx-backend.git"
   },
-  "bugs": {
-    "url": "https://github.com/Jlobo0210/Docker-nginx-backend/issues"
-  },
   "homepage": "https://github.com/Jlobo0210/Docker-nginx-backend#readme"
 }
