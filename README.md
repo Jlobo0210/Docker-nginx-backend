@@ -126,7 +126,7 @@ taller-docker-nginx/
 
 ```bash
 git clone https://github.com/Jlobo0210/Docker-nginx-backend.git
-cd taller-docker-nginx
+cd Docker-nginx-backend
 docker compose up -d --build
 ```
 
@@ -213,7 +213,7 @@ Ejemplo de respuesta de `/api/products/2`:
 | `docker compose restart nginx` | Reinicia un servicio (por ejemplo, tras cambiar `nginx.conf`) |
 | `docker compose down` | Detiene y elimina contenedores y la red del proyecto |
 | `docker network ls` | Lista las redes Docker |
-| `docker network inspect taller-docker-nginx_backend-net` | Muestra los contenedores conectados a la red y sus IP |
+| `docker network inspect docker-nginx-backend_backend-net` | Muestra los contenedores conectados a la red y sus IP |
 
 ### Explicación del Dockerfile
 
@@ -454,7 +454,7 @@ curl http://localhost:8080/health    # vuelve a responder 200
 
 ```bash
 docker network ls
-docker network inspect taller-docker-nginx_backend-net
+docker network inspect docker-nginx-backend_backend-net
 docker compose exec nginx ping -c 2 api
 ```
 
