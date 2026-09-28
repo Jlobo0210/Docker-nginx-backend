@@ -40,7 +40,7 @@ app.get("/", (_req: Request, res: Response) => {
     name: "backend-api",
     version: "1.0.0",
     description: "API REST de productos dockerizada con Nginx como reverse proxy",
-    endpoints: ["/health", "/api/products", "/api/products/:id"],
+    endpoints: ["/health", "/api/products", "/api/products/:id", "/redis-health"],
   });
 });
  
@@ -72,7 +72,7 @@ app.get("/redis-health", async (_req: Request, res: Response) => {
     return;
   }
 
-  
+
   const client = createClient({
     url: `redis://${REDIS_HOST}:6379`,   // REDIS_HOST = "redis" (nombre del servicio)
     socket: { connectTimeout: 2000, reconnectStrategy: false },
