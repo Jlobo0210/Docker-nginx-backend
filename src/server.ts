@@ -1,8 +1,11 @@
 import express, { Request, Response, NextFunction } from "express";
- 
+import { createClient } from "redis";
+
 // 1. Leer la configuración desde variables de entorno
 const PORT = process.env.PORT;
- 
+const REDIS_HOST = process.env.REDIS_HOST;
+
+
 if (!PORT) {
   console.error("ERROR: la variable de entorno PORT no está definida");
   process.exit(1);
@@ -60,7 +63,40 @@ app.get("/api/products/:id", (req: Request, res: Response) => {
   res.json(product);
 });
  
+
+//Nueva ruta de redis
+
+app.get("/redis-health", async (_req: Request, res: Response) => {
+  if (!REDIS_HOST) {
+    res.status(503).json({ status: "disabled", message: "REDIS_HOST no está configurado" });
+    return;
+  }
+
+  
+  const client = createClient({
+    url: `redis://${REDIS_HOST}:6379`,   // REDIS_HOST = "redis" (nombre del servicio)
+    socket: { connectTimeout: 2000, reconnectStrategy: false },
+  });
+
+
+  client.on("error", () => {}); // evita que un error de conexión tumbe la API
+  try {
+    await client.connect();
+    const pong = await client.ping();  // Redis responde "PONG"
+    await client.quit();
+    res.json({ status: "ok", redisHost: REDIS_HOST, response: pong });
+  } catch (err) {
+    res.status(503).json({ status: "error", redisHost: REDIS_HOST, message: (err as Error).message });
+  }
+});
+
+
+
+
+
 // 6. Arrancar el servidor escuchando en todas las interfaces (0.0.0.0)
 app.listen(Number(PORT), "0.0.0.0", () => {
   console.log(`backend-api escuchando en el puerto ${PORT}`);
 });
+
+
