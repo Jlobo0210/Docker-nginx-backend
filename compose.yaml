@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    environment:
+      PORT: "3000"
+    ports:
+      - "3000:3000"          # para comprobar que la API responde
+    networks:
+      - backend-net
+ 
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:8080"          # puerta de entrada pública
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api                  # compose arranca la API antes que Nginx
+    networks:
+      - backend-net
+ 
+networks:
+  backend-net:
+    driver: bridge
