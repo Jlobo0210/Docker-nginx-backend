@@ -20,5 +20,13 @@
     "@types/node": "^26.6.3",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jlobo0210/Docker-nginx-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jlobo0210/Docker-nginx-backend/issues"
+  },
+  "homepage": "https://github.com/Jlobo0210/Docker-nginx-backend#readme"
 }
