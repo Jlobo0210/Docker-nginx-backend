@@ -280,7 +280,7 @@ En la Parte 7 se reemplazó `ports: "3000:3000"` por `expose: "3000"` en el serv
 - `http://localhost:8080` → **funciona** (entrada a través de Nginx).
 - Nginx sigue llegando a `http://api:3000` porque ambos están en la red `backend-net`.
 
-**Matiz importante:** dentro de una red Docker, los contenedores pueden comunicarse por cualquier puerto en el que el otro esté escuchando, incluso sin `expose`. Por eso `expose` funciona sobre todo como **documentación** del puerto que usa el servicio (igual que `EXPOSE` en el Dockerfile). Lo que realmente aísla a la API del exterior es **no declarar `ports`**.
+Dentro de una red Docker, los contenedores pueden comunicarse por cualquier puerto en el que el otro esté escuchando, incluso sin `expose`, por lo que funciona sobre todo como documentación del puerto que usa el servicio (igual que `EXPOSE` en el Dockerfile). Lo que aísla a la API del exterior es no declarar `ports`.
 
 ---
 
