@@ -240,11 +240,12 @@ Con el contenedor de la Parte 2 en ejecución se usaron `docker logs backend-api
 
 | Dato | Comando | Valor obtenido |
 |---|---|---|
-| ID del contenedor | `docker inspect -f '{{.Id}}' backend-api` | `COMPLETAR` |
+| ID del contenedor | `docker inspect -f '{{.Id}}' backend-api` | `3425e28c4756a9a21e668c3091fc59b6cd9f3950944df209f034c4ada823d920
+` |
 | Imagen utilizada | `docker inspect -f '{{.Config.Image}}' backend-api` | `backend-api` |
 | Puerto publicado | `docker inspect -f '{{json .NetworkSettings.Ports}}' backend-api` | `3000/tcp -> 0.0.0.0:3000` |
-| Variables de entorno | `docker inspect -f '{{json .Config.Env}}' backend-api` | `PORT=3000`, `PATH=...`, `NODE_VERSION=...` |
-| Redes | `docker inspect -f '{{json .NetworkSettings.Networks}}' backend-api` | `bridge`, IP `COMPLETAR` |
+| Variables de entorno | `docker inspect -f '{{json .Config.Env}}' backend-api` | `PORT=3000`, `PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`, `NODE_VERSION=22.23.3` |
+| Redes | `docker inspect -f '{{json .NetworkSettings.Networks}}' backend-api` | `bridge`, IP `172.17.0.2` |
 | Estado | `docker inspect -f '{{.State.Status}}' backend-api` | `running` |
 
 ![docker inspect](evidencias/03-docker-inspect.png)
