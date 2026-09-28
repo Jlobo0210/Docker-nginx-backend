@@ -3,8 +3,8 @@ services:
     build: .
     environment:
       PORT: "3000"
-    ports:
-      - "3000:3000"          # para comprobar que la API responde
+    expose:
+      - "3000"
     networks:
       - backend-net
  
