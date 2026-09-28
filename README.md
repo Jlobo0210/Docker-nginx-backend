@@ -49,8 +49,6 @@ Para cumplirlo:
 
 **Tecnologías:** Node.js 22, Express 5, TypeScript, Docker, Docker Compose, Nginx (alpine), Redis 7 (alpine).
 
-> Nota: el taller pide `src/server.ts`, es decir, TypeScript. Por eso el proyecto incluye además un `tsconfig.json` y un paso de compilación (`npm run build`) dentro del Dockerfile.
-
 ---
 
 ## 2. Arquitectura implementada
