@@ -98,7 +98,7 @@ El usuario nunca habla directamente con la API.
 ## 3. Estructura del proyecto
 
 ```
-taller-docker-nginx/
+Docker-nginx-backend/
 ├── src/
 │   └── server.ts          # Código de la API (Express + TypeScript)
 ├── nginx/
